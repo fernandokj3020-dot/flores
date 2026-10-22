@@ -1,0 +1,374 @@
+body{
+    background-color: #87ceeb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.garden{
+    display: none; /* Oculto por defecto hasta que acepte */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 25px;
+    height: 100vh;
+    position: relative; 
+    width: 100%;
+    padding-bottom: 25px;
+}
+
+.tulip{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; 
+    z-index: 5;
+}
+
+.flower{
+    position: relative;
+    width: 60px;
+    height: 70px;
+    z-index: 2;
+    opacity: 0;
+    transform: scale(0);
+    animation: florecer 1.2s ease-out 1.5s forwards;
+}
+
+.petal{
+    position:absolute;
+    width: 40px;
+    height: 65px;
+    background-color:#ff4d6d;
+    border-radius: 50% 50% 40% 40%;
+}
+
+.petal.left{
+    left: 0;
+    transform:rotate(-20deg);
+    transform-origin: bottom right;
+}
+
+.petal.right{
+    right:0;
+   transform:rotate(20deg);
+   transform-origin: bottom left;
+}
+
+.petal.center{
+    left: 10px;
+    background-color: #ff758f;
+}
+
+.stem{
+    position: relative;
+    width: 8px;
+    height: 120px; /* Aumentado de 180px a 240px para que sean más largos */
+    background-color: #4caf50;
+    border-radius: 4px;
+    margin-top: -12px;
+    margin-bottom: -5px;
+    z-index: 1;
+    animation: crecerTallo 2s ease-out forwards;
+}
+
+@keyframes crecerTallo{
+    from{
+        height: 0px;
+    }
+    to{
+        height: 120px; /* Debe coincidir con la altura final del tallo */
+    }
+}
+
+@keyframes florecer{
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.leaf{
+    position: absolute;
+    width: 28px;
+    height: 95px;
+    background: #388e3c;
+    bottom: 50px;
+    opacity: 0;
+    transform: scale(0);
+    animation: brotarHoja 1s ease-out 1.2s forwards;
+    z-index: 3;
+}
+.leaf.left{
+    left: -1px;
+    border-radius: 0% 100% 10% 100%;
+    transform-origin:bottom right;
+    transform: rotate(-40deg);
+}
+
+.leaf.right{
+    right: -1px;
+    border-radius: 100% 0% 100% 10%;
+    transform-origin: bottom left;
+    transform: rotate(40deg);
+}
+
+@keyframes brotarHoja{
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- SOL Y ANIMACIÓN --- */
+.sun {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    width: 70px;
+    height: 70px;
+    background-color: #ffd166;
+    border-radius: 50%;
+    box-shadow: 0 0 40px #ffb703;
+    animation: pulsarSol 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulsarSol {
+    0% { transform: scale(1); box-shadow: 0 0 30px #ffb703; }
+    100% { transform: scale(1.08); box-shadow: 0 0 55px #ffb703; }
+}
+
+/* --- 5 NUBES FLOTANTES --- */
+.cloud {
+    position: absolute;
+    background: white;
+    border-radius: 100px;
+    opacity: 0.85;
+}
+
+.cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+}
+
+.cloud-1 {
+    width: 120px; height: 40px; top: 40px; left: -100px;
+    animation: moverNube 25s linear infinite;
+}
+.cloud-1::before { width: 50px; height: 50px; top: -25px; left: 20px; }
+.cloud-1::after { width: 40px; height: 40px; top: -18px; left: 60px; }
+
+.cloud-2 {
+    width: 100px; height: 35px; top: 100px; left: -150px;
+    animation: moverNube 32s linear infinite;
+    animation-delay: 5s;
+}
+.cloud-2::before { width: 40px; height: 40px; top: -20px; left: 15px; }
+.cloud-2::after { width: 35px; height: 35px; top: -15px; left: 45px; }
+
+.cloud-3 {
+    width: 140px; height: 45px; top: 70px; left: -200px;
+    animation: moverNube 20s linear infinite;
+    animation-delay: 12s;
+}
+.cloud-3::before { width: 60px; height: 60px; top: -30px; left: 25px; }
+.cloud-3::after { width: 50px; height: 50px; top: -22px; left: 70px; }
+
+.cloud-4 {
+    width: 90px; height: 30px; top: 150px; left: -120px;
+    animation: moverNube 38s linear infinite;
+    animation-delay: 2s;
+}
+.cloud-4::before { width: 35px; height: 35px; top: -16px; left: 15px; }
+.cloud-4::after { width: 30px; height: 30px; top: -12px; left: 40px; }
+
+.cloud-5 {
+    width: 110px; height: 38px; top: 25px; left: -180px;
+    animation: moverNube 28s linear infinite;
+    animation-delay: 18s;
+}
+.cloud-5::before { width: 45px; height: 45px; top: -22px; left: 20px; }
+.cloud-5::after { width: 38px; height: 38px; top: -16px; left: 55px; }
+
+@keyframes moverNube {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 250px)); }
+}
+
+/* --- HIERBAS BAJAS MÁS FRONDOSAS --- */
+.grass-field {
+    position: absolute;
+    bottom: 25px;
+    width: 85%;
+    max-width: 650px;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.blade {
+    position: relative;
+    width: 9px;
+    height: 38px;
+    background-color: #2b9348;
+    border-radius: 50% 50% 0 0;
+    transform-origin: bottom center;
+}
+
+.blade::before, .blade::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 8px;
+    height: 85%;
+    background-color: #40916c;
+    border-radius: 50% 50% 0 0;
+    transform-origin: bottom center;
+}
+
+.blade::before {
+    left: -5px;
+    transform: rotate(-18deg);
+    background-color: #55a630;
+}
+
+.blade::after {
+    right: -5px;
+    transform: rotate(18deg);
+    background-color: #1b4332;
+}
+
+.blade:nth-child(odd) { height: 32px; }
+.blade:nth-child(even) { height: 42px; }
+.blade:nth-child(1) { transform: rotate(-25deg); }
+.blade:nth-child(2) { transform: rotate(-15deg); }
+.blade:nth-child(3) { transform: rotate(-8deg); }
+.blade:nth-child(4) { transform: rotate(-3deg); }
+.blade:nth-child(5) { transform: rotate(6deg); }
+.blade:nth-child(6) { transform: rotate(14deg); }
+.blade:nth-child(7) { transform: rotate(-12deg); }
+.blade:nth-child(8) { transform: rotate(3deg); }
+.blade:nth-child(9) { transform: rotate(16deg); }
+.blade:nth-child(10) { transform: rotate(9deg); }
+.blade:nth-child(11) { transform: rotate(22deg); }
+.blade:nth-child(12) { transform: rotate(28deg); }
+
+/* --- MENSAJE DE AMOR EN EL CENTRO --- */
+.love-message {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 20;
+    width: 90%;
+    pointer-events: none;
+    animation: aparecerMensaje 2s ease-out forwards;
+    opacity: 0;
+}
+
+/* --- MENSAJE DE AMOR EN TONOS ROSADOS --- */
+.love-message h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 3rem;
+    color: #fd5cda; /* Rosado vibrante y romántico */
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.9), 0 4px 15px rgba(0, 0, 0, 0.1);
+    letter-spacing: 2px;
+}
+
+.love-message h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.8rem;
+    color: #e773c1; /* Rosado pastel suave */
+    margin: 5px 0 0 0;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.9), 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+}
+@keyframes aparecerMensaje {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* --- SUELO / PISO DEL JARDÍN --- */
+.ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    background: linear-gradient(to bottom, #52b788, #2d6a4f);
+    border-top: 3px solid #74c69d;
+    z-index: 4;
+}
+
+/* ==========================================
+   ADAPTABILIDAD PARA CELULARES Y TABLETS
+   ========================================== */
+@media (max-width: 768px) {
+    /* Reduce el tamaño de los títulos para que no se salgan de la pantalla en celulares */
+    .love-message h1 {
+        font-size: 2.2rem;
+    }
+    .love-message h2 {
+        font-size: 1.3rem;
+    }
+
+    /* Ajusta ligeramente el espacio entre tulipanes para pantallas chicas */
+    .garden {
+        gap: 15px;
+    }
+
+    /* Achica un poco los tallos y flores si la pantalla es muy estrecha */
+    .stem {
+        height: 140px;
+    }
+    @keyframes crecerTallo {
+        from { height: 0px; }
+        to { height: 140px; }
+    }
+    
+    .flower {
+        width: 50px;
+        height: 60px;
+    }
+    .petal {
+        width: 32px;
+        height: 52px;
+    }
+
+    /* Reduce el tamaño del sol y ajusta su posición */
+    .sun {
+        width: 55px;
+        height: 55px;
+        top: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes extra para teléfonos móviles pequeños */
+    .love-message h1 {
+        font-size: 1.8rem;
+    }
+    .love-message h2 {
+        font-size: 1.1rem;
+    }
+    .garden {
+        gap: 10px;
+    }
+}
