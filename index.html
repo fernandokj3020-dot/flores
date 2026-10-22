@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- JARDÍN (Permanece oculto al inicio) -->
     <div class="garden">
+        <!-- Elementos de fondo y ambiente -->
         <div class="sun"></div>
         <div class="cloud cloud-1"></div>
         <div class="cloud cloud-2"></div>
@@ -16,11 +16,15 @@
         <div class="cloud cloud-4"></div>
         <div class="cloud cloud-5"></div>
         
+        <!-- Mensaje de celebración en el centro -->
         <div class="love-message">
             <h1>Te amo</h1>
             <h2>Felices 4 meses mi vida</h2>
         </div>
 
+        <!-- Las flores se generan aquí con JavaScript -->
+
+        <!-- Hierbas bajas frondosas -->
         <div class="grass-field">
             <div class="blade"></div>
             <div class="blade"></div>
@@ -36,25 +40,21 @@
             <div class="blade"></div>
         </div>
 
+        <!-- Suelo / Piso del jardín -->
         <div class="ground"></div>
     </div>
 
-    <!-- CARTA / DEDICATORIA (Aparece justo después de los mensajes de alerta) -->
+    <!-- CARTA / DEDICATORIA FLOTANTE (FUERA del garden para que se vea siempre) -->
     <div id="carta-contenedor" class="carta-modal" style="display: none;">
         <div class="carta-contenido">
             <h2>✨ Para mi dulce niña ✨</h2>
-            <p>Mi dulce niña gracias por permitirme estar un mes más a tu lado, sé que no es mucho..., pero espero te guste este detallito que te hice.</p>
+            <p>Gracias por permitirme estar un mes más a tu lado, sé que no es mucho..., pero espero te guste este detallito que te hice.</p>
             <p>Quiero que sepas que te convertiste en alguien especial en mi vida y quiero seguir creando y guardando muchos más recuerdos juntos, sin importar lo que hagamos, porque ¿sabes qué? Mientras sea contigo todo es mucho más divertido.</p>
-            <p>Quiero seguir aprendiendo a tu lado, mejorando juntos para tener una relación envidiable. Recuerda que eres una mujer increíble, capaz de lograr todo lo que se proponga, nunca lo olvides.</p>
-            <p class="resaltado">Soy tu fan #1 y me siento muy orgulloso de cada pasito que estás dando. TE AMO MI MORENITA PRECIOSA JEJEJ... ¡Felices 4 meses! ❤️🌷</p>
+            <p>Quiero seguir aprendiendo a tu lado, mejorando juntos para tener una relación envidiable. Recuerda que eres una mujer increíble, capaz de lograr todo lo que se proponga, nunca lo olvides. Soy tu fan #1 y me siento muy orgulloso de cada pasito que estás dando.</p>
+            <p class="resaltado">TE AMO MI MORENITA PRECIOSA JEJEJ... ¡Felices 4 meses! ❤️🌷</p>
             <button id="cerrar-carta-btn">Ver mi jardín de tulipanes 🌸</button>
         </div>
     </div>
-
-    <!-- AUDIO DE FONDO -->
-    <audio id="background-music" loop>
-        <source src="fondo.mp3" type="audio/mpeg">
-    </audio>
 
     <script src="script.js"></script>
 </body>
